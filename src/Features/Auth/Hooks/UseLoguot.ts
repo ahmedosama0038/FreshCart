@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
-import { setUserInfo } from "../Store/Auth.Slice";
+import { setUserInfo, User } from "../Store/Auth.Slice";
 import { clearToken } from "../Server/Auth.actions";
 
 export default function useLogout() {
@@ -16,13 +16,12 @@ export default function useLogout() {
 
     try {
       await clearToken();
-
-      dispatch(
-        setUserInfo({
-          isAuthenticated: false,
-          userInfo: null,
-        })
-      );
+dispatch(
+  setUserInfo({
+    isAuthenticated: false,
+    userInfo: null,
+  } as unknown as User) 
+);
 
       toast.update(toastId, {
         render: "Logged out successfully 👋",
