@@ -81,7 +81,7 @@ export default function MobileSidebar({ isMune, toggleMune, wishlist, numOfCartI
               <MobileLink href="/Orders" icon={faBagShopping} label="My Orders" onClick={toggleMune} />
               <MobileLink href="/Wishlist" icon={faHeart} label="Wishlist" onClick={toggleMune} badge={wishlist} />
               <MobileLink href="/Porfile/Addrees" icon={faLocationDot} label="My Addresses" onClick={toggleMune} />
-              <MobileLink href="/setting" icon={faGear} label="Settings" onClick={toggleMune} />
+              <MobileLink href="/Porfile/setting" icon={faGear} label="Settings" onClick={toggleMune} />
             </div>
 
             {/* Footer Actions */}
