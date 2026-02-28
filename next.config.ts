@@ -1,8 +1,26 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ecommerce.routemisr.com',
+        pathname: '/**', 
+      },
+    ],
+  },
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
+  
+  async redirects() {
+    return [
+      {
+        source: '/allorders',
+        destination: '/Orders',
+        permanent: true, 
+      },
+    ];
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
