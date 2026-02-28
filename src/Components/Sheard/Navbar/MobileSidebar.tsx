@@ -69,7 +69,7 @@ export default function MobileSidebar({ isMune, toggleMune, wishlist, numOfCartI
             <div className="p-4 space-y-1">
               <p className="px-4 py-2 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Menu</p>
               <MobileLink href="/" icon={faHouse} label="Home" onClick={toggleMune} />
-              <MobileLink href="/Product/Shop" icon={faBagShopping} label="Shop" onClick={toggleMune} />
+              <MobileLink href="/Shop" icon={faBagShopping} label="Shop" onClick={toggleMune} />
               <MobileLink href="/Categories" icon={faLayerGroup} label="Categories" onClick={toggleMune} />
               {/* السطر اللي جاي ده هو اللي ضفناه */}
               <MobileLink href="/Contact" icon={faPhone} label="Contact Us" onClick={toggleMune} />
@@ -78,7 +78,7 @@ export default function MobileSidebar({ isMune, toggleMune, wishlist, numOfCartI
             {/* Account Specific Links */}
             <div className="p-4 space-y-1 border-t border-gray-50 dark:border-gray-800">
               <p className="px-4 py-2 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Personal</p>
-              <MobileLink href="/allorders" icon={faBagShopping} label="My Orders" onClick={toggleMune} />
+              <MobileLink href="/Orders" icon={faBagShopping} label="My Orders" onClick={toggleMune} />
               <MobileLink href="/Wishlist" icon={faHeart} label="Wishlist" onClick={toggleMune} badge={wishlist} />
               <MobileLink href="/Porfile/Addrees" icon={faLocationDot} label="My Addresses" onClick={toggleMune} />
               <MobileLink href="/setting" icon={faGear} label="Settings" onClick={toggleMune} />
