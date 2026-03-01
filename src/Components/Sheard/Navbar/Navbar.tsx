@@ -93,6 +93,12 @@ export default function Navbar() {
               >
                 Our Story
               </Link>
+              <Link
+                href="/reviews"
+                className="hover:text-green-600 transition-colors dark:text-gray-400 dark:hover:text-green-500"
+              >
+                REVIEWS
+              </Link>
               <div className="h-3 w-[1px] bg-gray-200 dark:bg-gray-700"></div>
               {isAuthenticated ? (
                 <span className="text-green-600 italic">
