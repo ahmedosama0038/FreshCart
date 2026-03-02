@@ -5,8 +5,12 @@ import SignupHero from "../Components/Signup/SignupHero";
 import SignupForm from "../Components/Signup/SignupForm";
 import { zodResolver } from '@hookform/resolvers/zod';
 import SignupFormValues, { SignupSchema } from "../Schemas/Signup.Scheme"; // تأكد من تصدير الـ Type من ملف الـ Schema
+import { SignupAction } from "../Server/Signup.Actions";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function SignupScreen() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -14,13 +18,20 @@ export default function SignupScreen() {
     watch,
   } = useForm<SignupFormValues>({
     mode: "onChange",
-    resolver: zodResolver(SignupSchema), // التصحيح هنا: كلمة resolver بدل zodResolver
+    resolver: zodResolver(SignupSchema), 
   });
 
-  // شلنا الـ any واستخدمنا الـ Type المظبوط
-  const onSubmit: SubmitHandler<SignupFormValues> = async (data) => {
-    console.log("Valid Data:", data);
-  };
+  const onSubmit = async (data: SignupFormValues) => {
+  const result = await SignupAction(data);
+
+ 
+  if (result?.success) {
+    router.push("/Login");
+  } else {
+   
+    toast.success(result?.message || "Something went wrong");
+  }
+};
 
   return (
     // ضفنا min-h-screen و flex عشان التصميم يظبط في نص الشاشة
