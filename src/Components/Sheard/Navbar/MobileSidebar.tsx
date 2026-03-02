@@ -73,6 +73,7 @@ export default function MobileSidebar({ isMune, toggleMune, wishlist, numOfCartI
               <MobileLink href="/Categories" icon={faLayerGroup} label="Categories" onClick={toggleMune} />
               {/* السطر اللي جاي ده هو اللي ضفناه */}
               <MobileLink href="/Contact" icon={faPhone} label="Contact Us" onClick={toggleMune} />
+              <MobileLink href="/About" icon={faPhone} label="About Us" onClick={toggleMune} />
             </div>
 
             {/* Account Specific Links */}

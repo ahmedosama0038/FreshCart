@@ -55,7 +55,7 @@ export const WishlistHeader = () => {
 
             {/* Right Side: Quick Action */}
             <Link
-              href="/Product"
+              href="/Shop"
               className="group flex items-center gap-4 bg-[#0f172a] dark:bg-white hover:bg-black dark:hover:bg-gray-100 text-white dark:text-black px-10 py-5 rounded-[2rem] font-black text-xs uppercase tracking-widest transition-all active:scale-95 shadow-2xl shadow-gray-200 dark:shadow-none"
             >
               <ShoppingBag size={20} className="group-hover:-translate-y-0.5 transition-transform" />

@@ -16,7 +16,7 @@ const About = () => {
           className="relative z-10"
         >
           <h1 className="text-6xl md:text-8xl font-black text-green-600 dark:text-green-500 mb-6 tracking-tight">
-            Fresh<span className="text-slate-900 dark:text-white">Cart</span>
+            Luxe.<span className="text-slate-900 dark:text-white">Mart</span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
             Revolutionizing the grocery experience with cutting-edge technology and farm-fresh quality.

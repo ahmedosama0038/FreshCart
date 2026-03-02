@@ -12,7 +12,7 @@ import { wishliststat } from "@/Features/Wishlist/store/wishlist.slice";
 import { GetLoggedUserWishlist } from "@/Features/Wishlist/server/wishlist.actions";
 import { ThemeProvider } from "@/Store/ThemeProvider";
 import Image from "next/image";
-
+import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
   title: {
@@ -72,6 +72,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
+        <NextTopLoader color="#0AAD0A" showSpinner={false} />
         <Providers
           preloadedState={{
             auth: authvalues,
