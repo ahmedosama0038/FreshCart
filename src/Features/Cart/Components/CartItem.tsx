@@ -72,7 +72,7 @@ const newCount = type === 'increment'? count+1 : count-1
   
   const revertType = type=== 'increment' ? 'decrement' :  'increment'
   dispatch(updateCount({ id: id, type: revertType }))
-  toast.error('حقك عليا نفيش نت')
+ toast.error("Connection error. Try again later.")
 }
 
 
