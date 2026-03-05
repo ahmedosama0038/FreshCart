@@ -10,7 +10,7 @@ import {
 } from "../Server/Server.actios";
 import { toast } from "react-toastify";
 import { useAppDaspatch } from "@/Store/Store";
-import { removedProduct, setCartInfo } from "../Store/Cart.slice";
+import { removedProduct, restoreProduct, setCartInfo, updateCount } from "../Store/Cart.slice";
 
 export const CartItem = ({ info }: { info: CartProduct }) => {
   const dispatch = useAppDaspatch();
@@ -49,17 +49,39 @@ export const CartItem = ({ info }: { info: CartProduct }) => {
     if (result.isConfirmed) {
       try {
         dispatch(removedProduct({ id }));
-        const response = removedCartProducts(id);
+        const response =await removedCartProducts(id);
         toast.success("Removed Item!");
       } catch (error) {
+        dispatch(restoreProduct(info));
         toast.error("Error Could not remove item");
       }
     }
   }
-  const handelUpdate = async (newCount: number) => {
-    if (newCount < 1) return;
-    const response = await updateCartQuantity(id, newCount);
-    dispatch(setCartInfo(response));
+
+
+
+
+
+  const handelUpdate = async (type: 'increment' | 'decrement'  ) => {
+ dispatch( updateCount({id, type}))
+try {
+  
+const newCount = type === 'increment'? count+1 : count-1
+   const response = await updateCartQuantity(id, newCount);
+} catch (error) {
+  
+  const revertType = type=== 'increment' ? 'decrement' :  'increment'
+  dispatch(updateCount({ id: id, type: revertType }))
+  toast.error('حقك عليا نفيش نت')
+}
+
+
+
+
+
+
+
+
   };
   return (
    <motion.div
@@ -92,7 +114,7 @@ export const CartItem = ({ info }: { info: CartProduct }) => {
   <div className="flex items-center gap-4 bg-gray-50 dark:bg-[#252525] p-2 rounded-2xl border dark:border-gray-700">
     <button
       onClick={() => {
-        handelUpdate(count - 1);
+        handelUpdate('decrement');
       }}
       disabled={count < 1}
       className="w-8 h-8 flex items-center justify-center bg-white dark:bg-[#1a1a1a] dark:text-gray-300 rounded-xl shadow-sm hover:text-green-600 dark:hover:text-green-500 transition disabled:opacity-50"
@@ -103,7 +125,7 @@ export const CartItem = ({ info }: { info: CartProduct }) => {
     <span className="font-bold w-6 text-center dark:text-gray-100">{count}</span>
     <button
       onClick={() => {
-        handelUpdate(count + 1);
+        handelUpdate( 'increment');
       }}
       disabled={count === quantity}
       className="w-8 h-8 flex items-center justify-center bg-green-600 text-white rounded-xl shadow-md hover:bg-green-700 transition"

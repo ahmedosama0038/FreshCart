@@ -59,7 +59,7 @@ return (
             ))}
           </div>
         ) : (
-          [...related, ...related].map((product: any, index) => (
+          [...related, ...related].map((product: Product, index) => (
             <div key={index} className="min-w-[250px] transform transition-transform duration-500 hover:-translate-y-2">
               <ProductCard info={product} />
             </div>

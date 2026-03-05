@@ -50,10 +50,29 @@ reducers:{
     state.products=[]
     state.totalCartPrice=0
     state.cartId=null
+  },
+  restoreProduct:function(state, action:PayloadAction<CartProduct>){
+    state.products.push(action.payload)
+    state .numOfCartItems=state.products.length
+    state.totalCartPrice+= action.payload.price*action.payload.count
+  },
+  updateCount:function(state, action:PayloadAction<{ id: string, type: 'increment' | 'decrement' }>) {
+    const items = state.products.find(item => item.product._id === action.payload.id)
+    if (items) {
+      if (action.payload.type==='increment') {
+         items.count++
+      }else{
+        items.count--
+        state.totalCartPrice-=items.price
+      }
+       
+ 
+
+    }
   }
 }
 
 })
 
 export const cartreducers= cartSlice.reducer
-export  const {setCartInfo,removedProduct , clearCart} =cartSlice.actions
+export  const {setCartInfo,removedProduct , clearCart , restoreProduct, updateCount} =cartSlice.actions
