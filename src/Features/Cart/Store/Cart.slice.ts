@@ -53,27 +53,25 @@ const cartSlice = createSlice({
       state.numOfCartItems = state.products.length;
       state.totalCartPrice += action.payload.price * action.payload.count;
     },
-    updateCount: function (
-      state,
-      action: PayloadAction<{ id: string; type: "increment" | "decrement" }>,
-    ) {
-      const items = state.products.find(
-        (item) => item.product._id === action.payload.id,
-      );
-      if (items) {
-        if (action.payload.type === "increment") {
-          items.count++;
-          state.totalCartPrice += items.price;
-          state.numOfCartItems = state.products.length;
-        } else {
-          if (items.count <= 1) {
-            items.count--;
-            state.totalCartPrice -= items.price;
-            state.numOfCartItems = state.products.length;
-          }
-        }
+   updateCount: function (state, action: PayloadAction<{ id: string; type: "increment" | "decrement" }>) {
+  const item = state.products.find((item) => item.product._id === action.payload.id);
+  
+  if (item) {
+    if (action.payload.type === "increment") {
+      item.count++; 
+      state.totalCartPrice += item.price;
+      
+      state.numOfCartItems++; 
+    } else {
+     
+      if (item.count > 1) { 
+        item.count--;
+        state.totalCartPrice -= item.price;
+        state.numOfCartItems--;
       }
-    },
+    }
+  }
+},
 
   },
 });
